@@ -1,0 +1,6 @@
+{
+  "name": "Bazodiac Astro-Reflexion",
+  "description": "Eine elegante, hochwertige Plattform zur Analyse und Selbstreflexion basierend auf westlicher Astrologie, BaZi und Wu-Xing Fusion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
