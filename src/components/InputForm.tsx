@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { calculateChart } from '../services/apiClient';
+import PlaceAutocomplete from './PlaceAutocomplete';
 
 export default function InputForm({ onResult }: { onResult: (data: any) => void }) {
   const [formData, setFormData] = useState({
     day: 1, month: 1, year: 2000, hour: 12, minute: 0,
     lat: 52.5, lon: 13.4, tz: 1 // Defaults for Berlin
   });
+
+  const handlePlaceSelect = (lat: number, lon: number) => {
+    setFormData(prev => ({ ...prev, lat, lon }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +35,7 @@ export default function InputForm({ onResult }: { onResult: (data: any) => void 
         <input type="number" placeholder="Stunde" className="bg-white/10 p-2 rounded" onChange={e => setFormData({...formData, hour: Number(e.target.value)})} />
         <input type="number" placeholder="Minute" className="bg-white/10 p-2 rounded" onChange={e => setFormData({...formData, minute: Number(e.target.value)})} />
       </div>
+      <PlaceAutocomplete onPlaceSelect={handlePlaceSelect} />
       <button type="submit" className="bg-[var(--color-accent)] w-full py-3 rounded-lg font-bold text-black hover:bg-orange-600 transition">Berechnen</button>
     </form>
   );
