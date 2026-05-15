@@ -5,11 +5,11 @@ import PlaceAutocomplete from './PlaceAutocomplete';
 export default function InputForm({ onResult }: { onResult: (data: any) => void }) {
   const [formData, setFormData] = useState({
     day: 1, month: 1, year: 2000, hour: 12, minute: 0,
-    lat: 52.5, lon: 13.4, tz: 1 // Defaults for Berlin
+    lat: 52.5, lon: 13.4, tz: 'Europe/Berlin'
   });
 
-  const handlePlaceSelect = (lat: number, lon: number) => {
-    setFormData(prev => ({ ...prev, lat, lon }));
+  const handlePlaceSelect = (lat: number, lon: number, tz: string) => {
+    setFormData(prev => ({ ...prev, lat, lon, tz }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
